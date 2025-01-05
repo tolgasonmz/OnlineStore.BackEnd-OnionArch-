@@ -10,6 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presantation", "Presantation", "{4A41B4FB-54C9-4E1E-9904-DDB5E1DD09A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hepsiburada.app", "Core\hepsiburada.app\hepsiburada.app.csproj", "{EBFE4F98-4B36-4787-8868-54BC95757F42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7BD89F08-AAFA-491C-AD64-37CB7C45A792} = {7BD89F08-AAFA-491C-AD64-37CB7C45A792}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hepsiburada.domain", "Core\hepsiburada.domain\hepsiburada.domain.csproj", "{26AFBDE4-E860-4677-8A84-81DE2DFCFD3A}"
 EndProject
