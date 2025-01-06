@@ -1,4 +1,6 @@
-﻿using hepsiburada.Persistence.Context;
+﻿using hepsiburada.app.Interfaces.Repositories;
+using hepsiburada.Persistence.Context;
+using hepsiburada.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,8 @@ namespace hepsiburada.Persistence
         {
             services.AddDbContext<AppDbContext>(opt =>
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
         }
     }
-}
+} 
