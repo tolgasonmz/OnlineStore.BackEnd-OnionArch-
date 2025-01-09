@@ -1,5 +1,6 @@
 ﻿using hepsiburada.app.Interfaces.Repositories;
 using hepsiburada.domain.Common;
+using hepsiburada.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace hepsiburada.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : class, IEntityBase, new()
     {
-        private readonly DbContext dbContext;
+        private readonly AppDbContext dbContext;
 
-        public WriteRepository(DbContext dbContext)
+        public WriteRepository(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
