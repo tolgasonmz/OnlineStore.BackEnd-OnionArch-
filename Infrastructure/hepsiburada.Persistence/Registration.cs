@@ -1,6 +1,8 @@
 ﻿using hepsiburada.app.Interfaces.Repositories;
+using hepsiburada.app.Interfaces.UnitOfWorks;
 using hepsiburada.Persistence.Context;
 using hepsiburada.Persistence.Repositories;
+using hepsiburada.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,7 @@ namespace hepsiburada.Persistence
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 } 

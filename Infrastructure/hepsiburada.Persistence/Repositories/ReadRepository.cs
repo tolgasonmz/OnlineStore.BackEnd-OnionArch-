@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using hepsiburada.app.Interfaces.Repositories;
 using hepsiburada.domain.Common;
+using hepsiburada.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 
@@ -12,15 +13,15 @@ namespace hepsiburada.Persistence.Repositories
 {
     public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase, new()
     {
-        private readonly DbContext dbContext;
+        private readonly AppDbContext dbContext;
 
-        public ReadRepository(DbContext dbContext)
+        public ReadRepository(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
         private DbSet<T> Table => dbContext.Set<T>();
 
-        public async Task<IList<T>> GetAllASync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
+        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
@@ -32,7 +33,7 @@ namespace hepsiburada.Persistence.Repositories
             return await queryable.ToListAsync();
         }
 
-        public async Task<IList<T>> GetAllASyncByPaging(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false, int curentPage = 1, int pageSize = 3)
+        public async Task<IList<T>> GetAllAsyncByPaging(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false, int curentPage = 1, int pageSize = 3)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
@@ -44,7 +45,7 @@ namespace hepsiburada.Persistence.Repositories
             return await queryable.Skip((curentPage - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
-        public async Task<T> GetASync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
+        public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
