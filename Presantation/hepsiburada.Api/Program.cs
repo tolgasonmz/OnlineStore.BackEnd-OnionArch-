@@ -1,6 +1,8 @@
 using hepsiburada.Persistence;
 using hepsiburada.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using hepsiburada.app;
+using hepsiburada.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,14 +17,16 @@ var env = builder.Environment;
 
 builder.Configuration
     .SetBasePath(env.ContentRootPath)
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("appsettings.json", optional: false)
+    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
     .AddEnvironmentVariables();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApp();
+builder.Services.AddCustomMapper();
 
 var app = builder.Build();
 
