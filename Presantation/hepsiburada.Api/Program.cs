@@ -3,6 +3,7 @@ using hepsiburada.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using hepsiburada.app;
 using hepsiburada.Mapper;
+using hepsiburada.app.Exceotions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();

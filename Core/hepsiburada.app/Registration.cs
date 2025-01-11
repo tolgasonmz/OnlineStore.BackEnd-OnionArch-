@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using hepsiburada.app.Exceotions;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace hepsiburada.app
         public static void AddApp(this IServiceCollection services)
         {
             var assembly = Assembly.GetExecutingAssembly();
+
+            services.AddTransient<ExceptionMiddleware>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
         }
