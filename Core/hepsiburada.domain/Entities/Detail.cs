@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace hepsiburada.domain.Entities
 {
-    public class Detail : EntityBase,IEntityBase
+    public class Detail : EntityBase
     {
         public Detail() { }
         public Detail(int id,string title,string description) 

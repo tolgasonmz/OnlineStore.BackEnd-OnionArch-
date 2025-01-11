@@ -1,4 +1,7 @@
-﻿using hepsiburada.app.Features.Products.Queries.GetAllProducts;
+﻿using hepsiburada.app.Features.Products.Command.CreateProduct;
+using hepsiburada.app.Features.Products.Command.DeleteProduct;
+using hepsiburada.app.Features.Products.Command.UpdateProduct;
+using hepsiburada.app.Features.Products.Queries.GetAllProducts;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +22,27 @@ namespace hepsiburada.Api.Controllers
         {
             var response = await mediator.Send(new GetAllProductsQueryRequest());
             return Ok(response);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> CreateProducts(CreateProductCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        } 
+        
+        [HttpPost]
+        public async Task<IActionResult> UpdateProducts(UpdateProductCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> DeleteProducts(DeleteProductCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
         }
     }
 }

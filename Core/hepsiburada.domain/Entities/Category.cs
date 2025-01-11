@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace hepsiburada.domain.Entities
 {
-    public class Category : EntityBase,IEntityBase
+    public class Category : EntityBase
     {
         public Category() { }
         public Category(int parentId, string name, int priorty) 
@@ -21,6 +21,6 @@ namespace hepsiburada.domain.Entities
         public int Priorty{ get; set; }
         public string Name { get; set; }
         public ICollection<Detail> Details { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public ICollection<ProductCategory> ProductCategory { get; set; }
     }
 }

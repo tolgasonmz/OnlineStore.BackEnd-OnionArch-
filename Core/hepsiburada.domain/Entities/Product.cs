@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace hepsiburada.domain.Entities
 {
-    public class Product : EntityBase, IEntityBase
+    public class Product : EntityBase
     {
         public Product() { }    
         public Product(string title, string description, int brandId, decimal price, decimal discount)
@@ -27,6 +27,6 @@ namespace hepsiburada.domain.Entities
         
         public Brand Brand { get; set; }
 
-        public ICollection<Category> Categories{ get; set; }
+        public ICollection<ProductCategory> ProductCategory { get; set; }
     }
 }
