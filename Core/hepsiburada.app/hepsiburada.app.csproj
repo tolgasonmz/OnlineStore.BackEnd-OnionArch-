@@ -16,8 +16,4 @@
     <ProjectReference Include="..\hepsiburada.domain\hepsiburada.domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Products\Command\" />
-  </ItemGroup>
-
 </Project>
