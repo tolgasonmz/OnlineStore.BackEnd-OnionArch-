@@ -36,6 +36,7 @@ namespace hepsiburada.app.Features.Products.Queries.GetAllProducts
             }
 
             return map;
+            //throw new Exception("Not Implement(test)");
         }
     }
 }
