@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using SendGrid.Helpers.Errors.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -29,11 +29,20 @@ namespace hepsiburada.app.Exceotions
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = statusCode;
 
-            List<string> errors = new()
+            if (exception.GetType() == typeof(ValidationException))
+            {
+                return httpContext.Response.WriteAsync(new ExceptionModel
                 {
-                    exception.Message,
-                    exception.InnerException?.ToString()
-                };
+                    Errors = ((ValidationException)exception).Errors.Select(e => e.ErrorMessage),
+                    StatusCode = statusCode
+                }.ToString());
+            }
+
+            List<string> errors = new()
+                    {
+                        exception.Message,
+                        exception.InnerException?.ToString()
+                    };
 
             return httpContext.Response.WriteAsync(new ExceptionModel
             {
