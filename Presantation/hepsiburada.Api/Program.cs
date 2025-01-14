@@ -32,7 +32,7 @@ builder.Services.AddCustomMapper();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.EnvironmentName == env.EnvironmentName)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
