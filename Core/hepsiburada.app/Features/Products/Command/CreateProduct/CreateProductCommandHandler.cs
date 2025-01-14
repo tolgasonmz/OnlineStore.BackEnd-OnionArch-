@@ -1,7 +1,10 @@
-﻿using hepsiburada.app.Features.Products.Rules;
+﻿using hepsiburada.app.Bases;
+using hepsiburada.app.Features.Products.Rules;
+using hepsiburada.app.Interfaces.AutoMapper;
 using hepsiburada.app.Interfaces.UnitOfWorks;
 using hepsiburada.domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +13,12 @@ using System.Threading.Tasks;
 
 namespace hepsiburada.app.Features.Products.Command.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
+    public class CreateProductCommandHandler : BaseHandler, IRequestHandler<CreateProductCommandRequest, Unit>
     {
         private readonly ProductRules productsRules;
-        private readonly IUnitOfWork unitOfWork;
 
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRules productRules)
+        public CreateProductCommandHandler(ProductRules productRules,IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(unitOfWork, mapper, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
             this.productsRules = productRules;
         }
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
