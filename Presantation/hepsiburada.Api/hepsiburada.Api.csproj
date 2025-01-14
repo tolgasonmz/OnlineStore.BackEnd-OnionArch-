@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\hepsiburada.Infrastructure\hepsiburada.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\hepsiburada.Persistence\hepsiburada.Persistence.csproj" />
 	  <ProjectReference Include="..\..\Core\hepsiburada.Mapper\hepsiburada.Mapper.csproj" />
   </ItemGroup>
