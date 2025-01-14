@@ -32,7 +32,7 @@ namespace hepsiburada.app
             var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t).ToList();
             foreach (var item in types)
             {
-                services.AddTransient(type);
+                services.AddTransient(item);
             }
 
             return services;
