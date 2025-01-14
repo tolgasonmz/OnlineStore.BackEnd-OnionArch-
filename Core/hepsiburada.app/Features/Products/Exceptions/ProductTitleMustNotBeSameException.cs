@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace hepsiburada.app.Features.Products.Exceptions
 {
-    public class ProductTitleMustNotBeSameException : BaseExceptions
+    public class ProductTitleMustNotBeSameException : BaseException
     {
         public ProductTitleMustNotBeSameException() : base("Product title must not be same.")
         {

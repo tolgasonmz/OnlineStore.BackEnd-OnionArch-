@@ -21,4 +21,8 @@
     <ProjectReference Include="..\hepsiburada.domain\hepsiburada.domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Auth\Queries\" />
+  </ItemGroup>
+
 </Project>
