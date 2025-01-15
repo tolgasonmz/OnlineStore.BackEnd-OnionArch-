@@ -37,5 +37,14 @@ namespace hepsiburada.app.Features.Auth.Rules
             }
             return Task.CompletedTask;
         }
+
+        public Task UserShouldNotBeInvalid(User? user)
+        {
+            if (user is null)
+            {
+                throw new UserInvalidException();
+            }
+            return Task.CompletedTask;
+        }
     }
 }
