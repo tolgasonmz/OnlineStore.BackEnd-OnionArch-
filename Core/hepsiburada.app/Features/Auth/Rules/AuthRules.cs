@@ -19,5 +19,14 @@ namespace hepsiburada.app.Features.Auth.Rules
             }
             return Task.CompletedTask;
         }
+
+        public Task EmailOrPasswordShouldNotBeInvalid(User? user, bool isPasswordCheck)
+        {
+            if (user is null || !isPasswordCheck)
+            {
+                throw new EmailOrPasswordInvalidException();
+            }
+            return Task.CompletedTask;
+        }
     }
 }
