@@ -1,4 +1,6 @@
-﻿using hepsiburada.app.Interfaces.Token;
+﻿using hepsiburada.app.Interfaces.RedisCache;
+using hepsiburada.app.Interfaces.Token;
+using hepsiburada.Infrastructure.RedisCache;
 using hepsiburada.Infrastructure.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +20,9 @@ namespace hepsiburada.Infrastructure
 
             services.AddTransient<ITokenService, TokenService>();
 
+            services.Configure<RedisCacheSettings>(configuration.GetSection("RedisCacheSettings"));
+            services.AddTransient<IRedisCacheService, RedisCacheService>();
+
             services.AddAuthentication(option => 
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -36,6 +41,12 @@ namespace hepsiburada.Infrastructure
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
                     ClockSkew = TimeSpan.Zero
                 };
+            });
+
+            services.AddStackExchangeRedisCache(rds =>
+            {
+                rds.Configuration = configuration["RedisCacheSettings:ConnectionString"];
+                rds.InstanceName = configuration["RedisCacheSettings:InstanceName"];
             });
         }
     }

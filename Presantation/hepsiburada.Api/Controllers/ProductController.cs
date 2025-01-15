@@ -1,4 +1,5 @@
-﻿using hepsiburada.app.Features.Products.Command.CreateProduct;
+﻿using hepsiburada.app.Features.Brands.Commands.CreateBrand;
+using hepsiburada.app.Features.Products.Command.CreateProduct;
 using hepsiburada.app.Features.Products.Command.DeleteProduct;
 using hepsiburada.app.Features.Products.Command.UpdateProduct;
 using hepsiburada.app.Features.Products.Queries.GetAllProducts;

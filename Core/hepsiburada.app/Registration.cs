@@ -21,6 +21,7 @@ namespace hepsiburada.app
             services.AddTransient<ExceptionMiddleware>();
             services.AddValidatorsFromAssembly(assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehevior<,>));
 
             //ValidatorOptions.Global.LanguageManager.Culture = new System.Globalization.CultureInfo("tr-TR");
 
