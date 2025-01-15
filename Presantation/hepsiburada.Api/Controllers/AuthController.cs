@@ -1,4 +1,5 @@
 ﻿using hepsiburada.app.Features.Auth.Command.Login;
+using hepsiburada.app.Features.Auth.Command.RefreshToken;
 using hepsiburada.app.Features.Auth.Command.Register;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +26,12 @@ namespace hepsiburada.Api.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> Login(LoginCommandRequest request)
+        {
+            var response = await mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> RefreshToken(RefreshTokenCommandRequest request)
         {
             var response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
