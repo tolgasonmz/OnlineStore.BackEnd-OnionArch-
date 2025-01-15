@@ -28,5 +28,14 @@ namespace hepsiburada.app.Features.Auth.Rules
             }
             return Task.CompletedTask;
         }
+        
+        public Task RefreshTokenShouldNotBeInvalid(DateTime? expiryDate)
+        {
+            if (expiryDate < DateTime.Now)
+            {
+                throw new RefreshTokenInvalidException();
+            }
+            return Task.CompletedTask;
+        }
     }
 }
