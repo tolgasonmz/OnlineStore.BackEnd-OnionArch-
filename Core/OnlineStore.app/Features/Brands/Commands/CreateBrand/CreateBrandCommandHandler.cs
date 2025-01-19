@@ -20,10 +20,10 @@ namespace OnlineStore.app.Features.Brands.Commands.CreateBrand
             Faker faker = new Faker();
             List<Brand> brands = new();
 
-            for (int i = 0; i < 1000000; i++)
-            {
-                brands.Add(new Brand(faker.Commerce.Department()));
-            }
+            //for (int i = 0; i < 1000000; i++)
+            //{
+            //    brands.Add(new Brand(faker.Commerce.Department()));
+            //}
 
             await unitOfWork.GetWriteRepository<Brand>().AddRangeAsync(brands);
             await unitOfWork.SaveAsync();

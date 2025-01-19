@@ -34,6 +34,19 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApp();
 builder.Services.AddCustomMapper();
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnlineStore.Api", Version = "v1" });
@@ -64,6 +77,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+// Enable CORS
+app.UseCors("AllowFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.EnvironmentName == env.EnvironmentName)
