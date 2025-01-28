@@ -11,12 +11,15 @@ namespace OnlineStore.domain.Entities
     public class Category : EntityBase
     {
         public Category() { }
-        public Category(int parentId, string name, int priorty) 
+
+        public Category(int parentId, string name, int priorty)
         {
             ParentId = parentId;
             Name = name;
             Priorty = priorty;
         }
+
+        public int Id { get; set; }
         public int ParentId { get; set; }
         public int Priorty{ get; set; }
         public string Name { get; set; }

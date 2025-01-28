@@ -16,7 +16,6 @@ namespace OnlineStore.app.Features.Products.Command.CreateProduct
             RuleFor(x => x.Price).GreaterThan(0).WithName("Price").WithMessage("Price must be greater than 0");
             RuleFor(x => x.BrandId).GreaterThan(0).NotEmpty().WithName("Brand").WithMessage("BrandId is required");
             RuleFor(x => x.Discount).GreaterThanOrEqualTo(0).WithName("Discount").WithMessage("Discount must be greater than or equal to 0");
-            RuleFor(x => x.CategoryIds).NotEmpty().Must(categories => categories.Any()).WithName("Category").WithMessage("CategoryIds is required");
         }
     }
 }

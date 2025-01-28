@@ -15,37 +15,37 @@ namespace OnlineStore.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Detail> builder)
         {
             //"Bogus" Package install
-            Faker faker = new ("tr");
+            //Faker faker = new ("tr");
 
-            Detail detail = new()
-            {
-                Id = 1,
-                Title = faker.Lorem.Sentence(1),
-                Description = faker.Lorem.Sentence(5),
-                CategoryId = 1,
-                CreatedDate = DateTime.Now,
-                IsDeleted = false,
-            };
-            Detail detail2 = new()
-            {
-                Id = 2,
-                Title = faker.Lorem.Sentence(2),
-                Description = faker.Lorem.Sentence(7),
-                CategoryId = 3,
-                CreatedDate = DateTime.Now,
-                IsDeleted = false,
-            };
-            Detail detail3 = new()
-            {
-                Id = 3,
-                Title = faker.Lorem.Sentence(1),
-                Description = faker.Lorem.Sentence(4),
-                CategoryId = 4,
-                CreatedDate = DateTime.Now,
-                IsDeleted = true,
-            };
+            //Detail detail = new()
+            //{
+            //    Id = 1,
+            //    Title = faker.Lorem.Sentence(1),
+            //    Description = faker.Lorem.Sentence(5),
+            //    CategoryId = 1,
+            //    CreatedDate = DateTime.Now,
+            //    IsDeleted = false,
+            //};
+            //Detail detail2 = new()
+            //{
+            //    Id = 2,
+            //    Title = faker.Lorem.Sentence(2),
+            //    Description = faker.Lorem.Sentence(7),
+            //    CategoryId = 3,
+            //    CreatedDate = DateTime.Now,
+            //    IsDeleted = false,
+            //};
+            //Detail detail3 = new()
+            //{
+            //    Id = 3,
+            //    Title = faker.Lorem.Sentence(1),
+            //    Description = faker.Lorem.Sentence(4),
+            //    CategoryId = 4,
+            //    CreatedDate = DateTime.Now,
+            //    IsDeleted = true,
+            //};
 
-            builder.HasData(detail,detail2,detail3);
+            //builder.HasData(detail,detail2,detail3);
         }
     }
 }

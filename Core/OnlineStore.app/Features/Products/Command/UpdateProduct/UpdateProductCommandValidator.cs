@@ -12,13 +12,11 @@ namespace OnlineStore.app.Features.Products.Command.UpdateProduct
     {
         public UpdateProductCommandValidator()
         {
-            RuleFor(x => x.Id).GreaterThan(0);
+            RuleFor(x => x.Id).NotEmpty();
             RuleFor(x => x.Title).NotEmpty().MaximumLength(100);
             RuleFor(x => x.Description).NotEmpty().MaximumLength(500);
-            RuleFor(x => x.BrandId).GreaterThan(0);
-            RuleFor(x => x.Price).GreaterThan(0);
-            RuleFor(x => x.Discount).GreaterThanOrEqualTo(0).LessThanOrEqualTo(100);
-            RuleFor(x => x.CategoryIds).NotEmpty();
+            RuleFor(x => x.BrandId).NotEmpty();
+            RuleFor(x => x.Price).NotEmpty().GreaterThan(0);
         }
     }
 }

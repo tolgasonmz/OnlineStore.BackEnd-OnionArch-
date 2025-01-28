@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "HB.Api.Dev": {
+    "OS.Api.Dev": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -19,7 +19,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "HB.Api.Prod": {
+    "OS.Api.Prod": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -29,7 +29,7 @@
         "ASPNETCORE_ENVIRONMENT": "Prod"
       }
     },
-    "HB.Api.Test": {
+    "OS.Api.Test": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -39,7 +39,7 @@
         "ASPNETCORE_ENVIRONMENT": "Test"
       }
     },
-    "HB.Api.Local": {
+    "OS.Api.Local": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
