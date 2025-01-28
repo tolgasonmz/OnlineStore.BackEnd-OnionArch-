@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\Categorys\Exceptions\" />
+    <Folder Include="Features\Categorys\Rules\" />
   </ItemGroup>
 
 </Project>
